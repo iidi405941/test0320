@@ -1,24 +1,63 @@
+:root {
+    --bg-color: #f0f0f0;
+    --text-color: #333;
+    --btn-bg: #fff;
+    --btn-text: #333;
+    --container-bg: #fff;
+    --container-shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+    --bg-color: #1a1a1a;
+    --text-color: #f0f0f0;
+    --btn-bg: #333;
+    --btn-text: #f0f0f0;
+    --container-bg: #2a2a2a;
+    --container-shadow: rgba(0, 0, 0, 0.5);
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    margin: 0;
 }
 
 .container {
     text-align: center;
+    padding: 40px;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--container-shadow);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-#generate-btn {
+#generate-btn, #theme-toggle {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
 }
 
 #numbers-container {
     margin-top: 20px;
     font-size: 24px;
     font-weight: bold;
+    min-height: 1.2em;
 }
