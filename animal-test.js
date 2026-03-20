@@ -1,6 +1,5 @@
 // Teachable Machine Model URL
-// 아래 주소를 본인이 만든 Teachable Machine 모델 주소로 교체하세요.
-const MODEL_URL = "https://teachablemachine.withgoogle.com/models/bj6en9V9/";
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/Yn1eu3tGy/";
 
 let model, webcam, labelContainer, maxPredictions;
 
