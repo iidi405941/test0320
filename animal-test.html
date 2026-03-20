@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물상 테스트 - 나를 닮은 동물은?</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>동물상 테스트</h1>
+            <p>인공지능이 분석하는 나의 동물상</p>
+        </header>
+
+        <section class="upload-section">
+            <div id="upload-area" class="upload-area">
+                <input type="file" id="image-input" accept="image/*" hidden>
+                <div class="upload-label" onclick="document.getElementById('image-input').click()">
+                    <img id="upload-icon" src="https://img.icons8.com/ios/100/000000/upload--v1.png" alt="Upload Icon">
+                    <p>사진을 올리거나 눌러서 선택하세요</p>
+                </div>
+                <img id="face-image" src="" alt="Face Image" style="display: none;">
+            </div>
+            
+            <div class="webcam-controls">
+                <button type="button" id="webcam-btn" class="secondary-btn">카메라 켜기</button>
+            </div>
+            <div id="webcam-container"></div>
+        </section>
+
+        <section id="result-section" class="result-section" style="display: none;">
+            <h2>분석 결과</h2>
+            <div id="label-container" class="label-container">
+                <!-- Predictions will be inserted here -->
+            </div>
+            <button onclick="location.reload()" class="retry-btn">다시 하기</button>
+        </section>
+
+        <section class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>AI가 분석 중입니다...</p>
+        </section>
+
+        <div class="back-link">
+            <a href="index.html">← 로또 번호 생성기로 돌아가기</a>
+        </div>
+    </div>
+
+    <!-- Teachable Machine Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script src="animal-test.js"></script>
+</body>
+</html>

@@ -1,37 +1,61 @@
 :root {
+    --bg-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #1c1e21;
+    --border-color: #dddfe2;
+    --input-bg: #ffffff;
+    --accent-color: #1877f2;
+    --accent-hover: #166fe5;
     --primary-color: #6366f1;
     --secondary-color: #4f46e5;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-    --white: #ffffff;
     --border-radius: 1rem;
     --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+[data-theme='dark'] {
+    --bg-color: #18191a;
+    --container-bg: #242526;
+    --text-color: #e4e6eb;
+    --border-color: #3e4042;
+    --input-bg: #3a3b3c;
+    --accent-color: #45bd62;
+    --accent-hover: #36a420;
 }
 
 body {
-    font-family: 'Noto Sans KR', sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 2rem 1rem;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 2rem 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    background-color: var(--container-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 20px;
+    z-index: 100;
 }
 
 .container {
-    background-color: var(--white);
-    max-width: 600px;
-    width: 100%;
+    background-color: var(--container-bg);
     padding: 2.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -47,18 +71,49 @@ header p {
     margin-bottom: 2rem;
 }
 
-.upload-section {
-    margin-bottom: 2rem;
+.nav-links {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
 }
 
+.nav-btn {
+    display: inline-block;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.nav-btn:hover {
+    background-color: #fa5252;
+    transform: scale(1.05);
+}
+
+.back-link {
+    margin-top: 2rem;
+}
+
+.back-link a {
+    color: #64748b;
+    text-decoration: none;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Animal Test Styles */
 .upload-area {
     border: 2px dashed #cbd5e1;
     border-radius: var(--border-radius);
     padding: 2rem;
     cursor: pointer;
     transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
     min-height: 200px;
     display: flex;
     justify-content: center;
@@ -67,56 +122,27 @@ header p {
 
 .upload-area:hover {
     border-color: var(--primary-color);
-    background-color: #f1f5f9;
-}
-
-.upload-label img {
-    margin-bottom: 1rem;
-    opacity: 0.5;
+    background-color: rgba(99, 102, 241, 0.05);
 }
 
 #face-image {
     max-width: 100%;
     border-radius: var(--border-radius);
-    object-fit: contain;
-}
-
-.webcam-controls {
-    margin-top: 1rem;
 }
 
 .secondary-btn {
     background: none;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--border-color);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: all 0.2s ease;
-}
-
-.secondary-btn:hover {
-    background-color: #f1f5f9;
-    border-color: var(--primary-color);
-}
-
-.result-section {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #e2e8f0;
-}
-
-.result-section h2 {
-    margin-bottom: 1.5rem;
-}
-
-.label-container {
-    text-align: left;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    color: var(--text-color);
 }
 
 .prediction-bar {
     margin-bottom: 1rem;
+    text-align: left;
 }
 
 .label-text {
@@ -141,22 +167,13 @@ header p {
 
 .retry-btn {
     background-color: var(--primary-color);
-    color: var(--white);
+    color: white;
     border: none;
     padding: 0.75rem 2rem;
     border-radius: 0.5rem;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.retry-btn:hover {
-    background-color: var(--secondary-color);
-}
-
-.loading {
-    margin-top: 2rem;
 }
 
 .spinner {
@@ -174,11 +191,31 @@ header p {
     100% { transform: rotate(360deg); }
 }
 
-@media (max-width: 480px) {
-    .container {
-        padding: 1.5rem;
-    }
-    header h1 {
-        font-size: 2rem;
-    }
+/* Original Lotto Styles */
+#generate-btn {
+    width: 100%;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
+
+#numbers-container {
+    margin-top: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.contact-section {
+    text-align: left;
+}
+
+.form-group { margin-bottom: 1rem; }
+label { display: block; margin-bottom: 0.5rem; }
+input, textarea { width: 100%; padding: 0.75rem; border: 1px solid var(--border-color); border-radius: 6px; background: var(--input-bg); color: var(--text-color); }
+button[type="submit"] { width: 100%; background: var(--accent-color); color: white; padding: 0.75rem; border: none; border-radius: 6px; cursor: pointer; }
