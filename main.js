@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateToggleText(theme) {
         if (themeToggle) {
-            themeToggle.textContent = theme === 'light' ? '🌙 Switch to Dark' : '☀️ Switch to Light';
+            themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
         }
     }
 
